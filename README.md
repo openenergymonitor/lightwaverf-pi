@@ -27,8 +27,8 @@ Before compile & install MQTT server and authentications details can be set in [
 	sudo apt-get update
   	sudo apt-get install wiringpi
   	sudo apt-get install mosquitto-clients
-	git clone http://git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.c.git
-	cd org.eclipse.paho.mqtt.c
+	git clone https://github.com/eclipse/paho.mqtt.c
+	cd paho.mqtt.c
   	make
   	sudo make install
 
