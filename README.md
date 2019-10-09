@@ -41,6 +41,31 @@ To test manually start:
 
 	sudo ./mqttsend
 
+## Systemd
+
+```
+sudo ln -s /home/pilightwaverf-pi/lwrfmqtt.service /etc/systemd/system/lwrfmqtt.service
+sudo systemctl daemon-reload
+sudo systemctl enable lwrfmqtt.service
+```
+
+START / STOP With:
+
+```
+sudo systemctl start lwrfmqtt
+sudo systemctl stop lwrfmqtt
+```
+
+VIEW STATUS / LOG
+
+`sudo systemctl status lwrfmqtt -n50`
+
+where -nX is the number of log lines to view
+
+`sudo journalctl -f -u lwrfmqtt -o cat | grep lwrfmqtt`
+
+## init.d
+
 To start via /etc/init.d service:
 
   	sudo service lwrfd start

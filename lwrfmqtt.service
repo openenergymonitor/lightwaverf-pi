@@ -1,0 +1,55 @@
+# Systemd unit file for mqtt input script
+
+# INSTALL:
+# sudo ln -s /home/pilightwaverf-pi/lwrfmqtt.service /etc/systemd/system/lwrfmqtt.service
+
+# RUN AT STARTUP
+
+# sudo systemctl daemon-reload
+# sudo systemctl enable lwrfmqtt.service
+
+# START / STOP With:
+
+# sudo systemctl start lwrfmqtt
+# sudo systemctl stop lwrfmqtt
+
+# VIEW STATUS / LOG
+
+# sudo systemctl status lwrfmqtt -n50
+# where -nX is the number of log lines to view
+# sudo journalctl -f -u lwrfmqtt -o cat | grep lwrfmqtt
+
+###
+#
+#  All Emoncms code is released under the GNU Affero General Public License.
+#  See COPYRIGHT.txt and LICENSE.txt.
+#
+#  ---------------------------------------------------------------------
+#  Emoncms - open source energy visualisation
+#  Part of the OpenEnergyMonitor project:
+#  http://openenergymonitor.org
+###
+
+[Unit]
+Description=LightwaveRF MQTT daemon
+After=mosquitto.service
+Documentation=https://github.com/openenergymonitor/lightwaverf-pi
+
+[Service]
+Type=idle
+ExecStart=/usr/local/bin/mqttsend
+
+# Restart script if stopped
+Restart=always
+# Wait 60s before restart
+RestartSec=60
+
+# Tag things in the log
+# View with: sudo journalctl -f -u lwrfmqtt -o cat
+SyslogIdentifier=lwrfmqtt
+
+# Un-comment to pipe log to syslog
+#StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target
