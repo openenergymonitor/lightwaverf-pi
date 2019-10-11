@@ -44,7 +44,8 @@ To test manually start:
 ## Systemd
 
 ```
-sudo ln -s /home/pilightwaverf-pi/lwrfmqtt.service /etc/systemd/system/lwrfmqtt.service
+sudo ln -s /home/pi/lightwaverf-pi/mqttsend /usr/local/bin/mqttsend
+sudo ln -s /home/pi/lightwaverf-pi/lwrfmqtt.service /etc/systemd/system/lwrfmqtt.service
 sudo systemctl daemon-reload
 sudo systemctl enable lwrfmqtt.service
 ```
